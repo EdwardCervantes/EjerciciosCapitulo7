@@ -1,0 +1,264 @@
+Pregunta 1
+#include <stdio.h>
+#include <stdlib.h>
+
+int fun(int *k);
+int main()
+{
+    int i = 10, j = 10, sum1, sum2;
+    sum1 = (i / 2) + fun(&i);//41+5
+    sum2 = fun(&j) + (j / 2);//41+7=>/k+=4
+    printf("sum1:%d\n",sum1);
+    printf("sum2:%d\n",sum2);
+    return 0;
+}
+int fun(int *k)
+{
+ *k += 4;
+ int t = 3 * (*k) - 1;
+ printf("t:%d\n",t);
+ return t;
+}
+----------------------------------
+Pregunta 2
+C++
+#include <iostream>
+
+#include <stdlib.h>
+
+using namespace std;
+
+
+int fun(int *k);
+
+int main()
+
+{
+   
+ int i = 10,j = 10,sum1, sum2;
+ 
+ sum1 = (i / 2) + fun(&i);//41+5
+ 
+ sum2 = fun(&j) + (j / 2);//41+7=>/k+=4
+ 
+ cout<<sum1;
+ //46 
+ cout<<sum2;
+ //48
+ return 0;
+
+}
+
+int fun(int *k)
+
+ {
+ 
+*k += 4;
+
+ int t = 3 * (*k) - 1;
+ 
+
+ return t;
+ 
+}
+Java
+public class HelloWorld
+{
+
+     
+public static void main(String []args)
+{
+        
+ System.out.println("Hello World");
+
+ int i[]=new int[1];
+ 
+ int j[]=new int[1];
+  
+ i[0]=10;
+ 
+ j[0]=10;
+ 
+ int sum1=(i[0]/2);
+ 
+ int f = fun(i);
+  
+ sum1+=f;
+   
+ f = fun(j);
+ 
+ int sum2 = f + (j[0]/2);
+  
+ System.out.println("Sum1 = : "+sum1);
+//46
+ System.out.println("Sum2 = : "+sum2);
+//48
+ }
+ 
+public static int fun(int k[])
+
+{
+    
+    
+ k[0]=k[0]+4;
+
+    
+    return 3 * k[0] - 1;//devuelve siempre 41
+
+}
+
+}
+C#
+private void Window_Loaded(object sender, RoutedEventArgs e)
+{
+ int _i = 10, j = 10, sum1, sum2;
+ sum1 = (_i / 2) + fun(ref _i);//41+5
+ sum2 = fun(ref j) + (j / 2);//41+7=>/k+=4
+ Console.WriteLine(sum1);//46 
+ Console.WriteLine(sum2);//48
+}
+int fun(ref int k)
+{
+ k += 4;
+ int t = 3 * k - 1;
+ return t;
+}
+------------------------------
+Pregunta 3
+int main()
+{
+    int t1 = 3+5*6;//precedencia a la *
+    int t2 = 3*5+6;
+    int t3 = (3+5)*6;//asociatividad
+    int t4 = 3*5+4+10/2;//precedencia a la / y *
+    int t5 = 6*10/3;//izquierda a derecha
+    int t6 = 10/3*6;//izquierda a derecha
+    int a=2;
+    int b=4;
+    int c=6;
+    if(a < 3 && b < 2 || c < 5)
+        cout <<"ok"<< endl;//no entra
+    if(a < 3 && b < 2 || c > 5)
+        cout <<"ok"<< endl;
+    cout <<t1<< endl;
+    cout <<t2<< endl;
+    cout <<t3<< endl;
+    cout <<t4<< endl;
+    cout <<t5<< endl;
+    cout <<t6<< endl;
+    return 0;
+}
+--------------------------------
+Pregunta 4
+public class HelloWorld
+{
+public static void main(String []args)
+{
+ int num1[]=new int[1];
+
+     int num2[]=new int[1];
+
+     num1[0]=2;
+
+     num2[0]=2;
+
+     int a=num1[0];
+
+     funcion2(num1);
+
+     a+=num1[0];
+
+     funcion2(num2);
+
+     int b = num2[0] + num2[0];
+
+     System.out.println("A = : "+a);// A=14
+     System.out.println("B = : "+b);
+// B=24
+     }
+
+     public static void funcion2(int num[])
+
+{
+    
+num[0]=num[0]+10;
+
+}
+    
+ public static int funcion(int x)
+
+{
+   
+ x = x + 10;
+ 
+   return x;
+
+}
+
+}
+----------------------------
+Pregunta 7
+private void Window_Loaded(object sender, RoutedEventArgs e)
+{
+    int x1 = 2;
+    int x2 = 2;
+    int a = x1 + funcion(ref x1);//a=14;
+    int b = funcion(ref x2) + x2;//b=24;
+}
+        
+public int funcion(ref int x)
+{
+    x = x + 10;
+    return x;
+}
+-------------------------
+Pregunta 8
+#include <stdio.h>
+#include <stdlib.h> 
+
+int fun(int *a);
+int main()
+{
+ int a, b;
+a = 10;
+b = a + fun(&a);
+printf("With the function call on the right, ");
+printf(" b is: %d\n", b);
+a = 10;
+b = fun(&a) + a;
+printf("With the function call on the left, ");
+printf(" b is: %d\n", b);
+ return 0;
+}
+
+int fun(int *a)
+{
+ *a+=10;
+ return 0; 
+
+}
+-------------------------
+Pregunta 9
+private void Window_Loaded(object sender, RoutedEventArgs e)
+{
+      float f1 = 5.26748591545165F;
+            float f2 = 7.51248569154144F;
+            long antes = DateTime.Now.Ticks;
+            float f3 = f1 * f2;
+            f3 = f1 + f2;
+            f3 = f2 - f1;
+            f3 = f2 / f1;
+            long despues = DateTime.Now.Ticks;
+            TimeSpan ts = new TimeSpan(antes - despues);
+            Console.WriteLine("Tiempo1 :" + ts);//00:00:00
+            antes = DateTime.Now.Ticks;
+            int i1 = 154895461;
+            int i2 = 789841321;
+            int i3 = i1 * i2;
+            i3 = i1 + i2;
+            i3 = i2 - i1;
+            i3 = i2 / i1;
+            despues = DateTime.Now.Ticks;
+            ts = new TimeSpan(antes - despues);
+            Console.WriteLine("Tiempo2 :" + ts);//00:00:00.0009766
+}
